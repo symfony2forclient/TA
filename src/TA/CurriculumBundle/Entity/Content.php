@@ -21,14 +21,10 @@ class Content
      */
     private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="courseId", type="integer")
-     */
-    private $courseId;
 
     /**
+     * @var Course
+     * 
      * @ORM\ManyToOne(targetEntity="Course", inversedBy="contents")
      * @ORM\JoinColumn(name="courseId", referencedColumnName="id")
      */
@@ -62,7 +58,6 @@ class Content
      */
     private $ordering;
 
-
     /**
      * Get id
      *
@@ -73,141 +68,43 @@ class Content
         return $this->id;
     }
 
-    /**
-     * Set courseId
-     *
-     * @param integer $courseId
-     * @return Content
-     */
-    public function setCourseId($courseId)
-    {
-        $this->courseId = $courseId;
-
-        return $this;
+    public function getCourse() {
+        return $this->course;
     }
 
-    /**
-     * Get courseId
-     *
-     * @return integer
-     */
-    public function getCourseId()
-    {
-        return $this->courseId;
+    public function setCourse($course) {
+        $this->course = $course;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Content
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Content
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
+    public function setTitle($title) {
+        $this->title = $title;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Content
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
-    /**
-     * Get type
-     *
-     * @return integer
-     */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
-    /**
-     * Set ordering
-     *
-     * @param integer $ordering
-     * @return Content
-     */
-    public function setOrdering($ordering)
-    {
-        $this->ordering = $ordering;
-
-        return $this;
+    public function setType($type) {
+        $this->type = $type;
     }
 
-    /**
-     * Get ordering
-     *
-     * @return integer
-     */
-    public function getOrdering()
-    {
+    public function getOrdering() {
         return $this->ordering;
     }
 
-    /**
-     * Set course
-     *
-     * @param \TA\CurriculumBundle\Entity\Course $course
-     * @return Content
-     */
-    public function setCourse(\TA\CurriculumBundle\Entity\Course $course = null)
-    {
-        $this->course = $course;
-
-        return $this;
-    }
-
-    /**
-     * Get course
-     *
-     * @return \TA\CurriculumBundle\Entity\Course 
-     */
-    public function getCourse()
-    {
-        return $this->course;
+    public function setOrdering($ordering) {
+        $this->ordering = $ordering;
     }
 }

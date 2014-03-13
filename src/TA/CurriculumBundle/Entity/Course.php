@@ -85,270 +85,230 @@ class Course {
     private $targetAgeTo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Content", mappedBy="Course")
+     * @ORM\OneToMany(targetEntity="Content", mappedBy="course")
      */
     private $contents;
     
     /**
      * @ORM\OneToMany(targetEntity="CourseToCategory", mappedBy="course")
      */
-    private $courseToCategory;
+    private $courseToCategories;
+
+   /**
+    * Constructor
+    */
+    public function __construct() {
+        $this->contents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseToCategories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
-     * Get id
-     *
-     * @return integer
+     * Get Id
+     * 
+     * @return int
      */
     public function getId() {
         return $this->id;
     }
-
+    
     /**
-     * Set title
-     *
-     * @param string $title
-     * @return Course
-     */
-    public function setTitle($title) {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
+     * Get Title
+     * 
      * @return string
      */
     public function getTitle() {
         return $this->title;
     }
-
+    
     /**
-     * Set description
-     *
-     * @param string $description
-     * @return Course
+     * set Title
+     * 
+     * @param string $title
      */
-    public function setDescription($description) {
-        $this->description = $description;
-
-        return $this;
+    public function setTitle($title) {
+        $this->title = $title;
     }
-
+    
     /**
      * Get description
-     *
+     * 
      * @return string
      */
     public function getDescription() {
         return $this->description;
     }
-
+    
     /**
-     * Set image
-     *
-     * @param string $image
-     * @return Course
+     * Set description
+     * 
+     * @param string $description
      */
-    public function setImage($image) {
-        $this->image = $image;
-
-        return $this;
+    public function setDescription($description) {
+        $this->description = $description;
     }
-
+    
     /**
      * Get image
-     *
+     * 
      * @return string
      */
     public function getImage() {
         return $this->image;
     }
-
+    
     /**
-     * Set promoVideo
-     *
-     * @param string $promoVideo
-     * @return Course
+     * Get image
+     * 
+     * @param string $image
      */
-    public function setPromoVideo($promoVideo) {
-        $this->promoVideo = $promoVideo;
-
-        return $this;
+    public function setImage($image) {
+        $this->image = $image;
     }
-
+    
     /**
      * Get promoVideo
-     *
+     * 
      * @return string
      */
     public function getPromoVideo() {
         return $this->promoVideo;
     }
-
+    
     /**
-     * Set dateCreated
-     *
-     * @param \DateTime $dateCreated
-     * @return Course
+     * Set PromoVideo
+     * 
+     * @param string $promoVideo
      */
-    public function setDateCreated($dateCreated) {
-        $this->dateCreated = $dateCreated;
-
-        return $this;
+    public function setPromoVideo($promoVideo) {
+        $this->promoVideo = $promoVideo;
     }
-
+    
     /**
-     * Get dateCreated
-     *
-     * @return \DateTime
+     * get dateCreated
+     * 
+     * @return DateTime
      */
     public function getDateCreated() {
         return $this->dateCreated;
     }
-
+    
     /**
-     * Set dateUpdated
-     *
-     * @param \DateTime $dateUpdated
-     * @return Course
+     * Set DateCreated
+     * 
+     * @param \DateTime $dateCreated
      */
-    public function setDateUpdated($dateUpdated) {
-        $this->dateUpdated = $dateUpdated;
-
-        return $this;
+    public function setDateCreated(\DateTime $dateCreated) {
+        $this->dateCreated = $dateCreated;
     }
-
+    
     /**
      * Get dateUpdated
-     *
-     * @return \DateTime
+     * 
+     * @return DateTime
      */
     public function getDateUpdated() {
         return $this->dateUpdated;
     }
-
+    
     /**
-     * Set visits
-     *
-     * @param integer $visits
-     * @return Course
+     * Set dateUpdated
+     * 
+     * @param \DateTime $dateUpdated
      */
-    public function setVisits($visits) {
-        $this->visits = $visits;
-
-        return $this;
+    public function setDateUpdated(\DateTime $dateUpdated) {
+        $this->dateUpdated = $dateUpdated;
     }
-
+    
     /**
      * Get visits
-     *
-     * @return integer
+     * 
+     * @return int
      */
     public function getVisits() {
         return $this->visits;
     }
-
+    
     /**
-     * Set visitsUnique
-     *
-     * @param integer $visitsUnique
-     * @return Course
+     * Set visists
+     * 
+     * @param int $visits
      */
-    public function setVisitsUnique($visitsUnique) {
-        $this->visitsUnique = $visitsUnique;
-
-        return $this;
+    public function setVisits($visits) {
+        $this->visits = $visits;
     }
-
-    /**
-     * Get visitsUnique
-     *
-     * @return integer
-     */
-    public function getVisitsUnique() {
-        return $this->visitsUnique;
-    }
-
-    /**
-     * Set targetAgeFrom
-     *
-     * @param integer $targetAgeFrom
-     * @return Course
-     */
-    public function setTargetAgeFrom($targetAgeFrom) {
-        $this->targetAgeFrom = $targetAgeFrom;
-
-        return $this;
-    }
-
+    
     /**
      * Get targetAgeFrom
-     *
-     * @return integer
+     * 
+     * @return int
      */
     public function getTargetAgeFrom() {
         return $this->targetAgeFrom;
     }
-
+    
     /**
-     * Set targetAgeTo
-     *
-     * @param integer $targetAgeTo
-     * @return Course
+     * Set targetAgeFrom
+     * 
+     * @param int $targetAgeFrom
      */
-    public function setTargetAgeTo($targetAgeTo) {
-        $this->targetAgeTo = $targetAgeTo;
-
-        return $this;
+    public function setTargetAgeFrom($targetAgeFrom) {
+        $this->targetAgeFrom = $targetAgeFrom;
     }
-
+    
     /**
      * Get targetAgeTo
-     *
-     * @return integer
+     * 
+     * @return int
      */
     public function getTargetAgeTo() {
         return $this->targetAgeTo;
     }
-
+    
     /**
-     * Constructor
+     * Set targetAgeTo
+     * 
+     * @param int $targetAgeTo
      */
-    public function __construct() {
-        $this->contents = new \Doctrine\Common\Collections\ArrayCollection();
+    public function setTargetAgeTo($targetAgeTo) {
+        $this->targetAgeTo = $targetAgeTo;
     }
 
     /**
-     * Add contents
-     *
-     * @param \TA\CurriculumBundle\Entity\Content $contents
-     * @return Course
-     */
-    public function addContent(\TA\CurriculumBundle\Entity\Content $contents) {
-        $this->contents[] = $contents;
-
-        return $this;
-    }
-
-    /**
-     * Remove contents
-     *
-     * @param \TA\CurriculumBundle\Entity\Content $contents
-     */
-    public function removeContent(\TA\CurriculumBundle\Entity\Content $contents) {
-        $this->contents->removeElement($contents);
-    }
-
-    /**
-     * Get contents
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * Get content
+     * 
+     * @return List<Content> contents
      */
     public function getContents() {
         return $this->contents;
     }
-
+    
+    /**
+     * Add contents
+     * 
+     * @param Content $contents
+     */
+    public function addContents($contents) {
+        $this->contents[] = $contents;
+    }
+    
+    /**
+     * Get courceToCategoies
+     * 
+     * @return List<CourseToCategory>
+     */
+    public function getCourseToCategories() {
+        return $this->courseToCategories;
+    }
+    
+    /**
+     * Add courseToCategories
+     * 
+     * @param CourseToCategory
+     */
+    public function addCourseToCategories($courseToCategories) {
+        $this->courseToCategories[] = $courseToCategories;
+    }
+ 
     public function __toString() {
         return $this->title;
     }

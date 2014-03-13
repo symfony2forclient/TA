@@ -21,120 +21,83 @@ class CourseToCategory
      */
     private $id;
     
-    /**
-     * @var integer
-     *
-     * 
-     * @ORM\Column(name="courseId", type="integer")
-     */
-    private $courseId;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Course", inversedBy="courseToCategory")
-     * @ORM\JoinColumn(name="courseId", referencedColumnName="id")
- 
-    private $course;
-     */
-    
-    /**
-     * @var integer
-     *
-     * 
-     * @ORM\Column(name="categoryId", type="integer")
-     */
-    private $categoryId;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="courseToCategory")
-     * @ORM\JoinColumn(name="categoryId", referencedColumnName="id")
-     
-    private $category;
+   
+   /**
+    * @ORM\ManyToOne(targetEntity="Course", inversedBy="courseToCategories")
+    * @ORM\JoinColumn(name="courseId", referencedColumnName="id")
     */
+    private $course;
     
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ordering", type="smallint", options={"default" = 1})
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="courseToCategories")
+     * @ORM\JoinColumn(name="categoryId", referencedColumnName="id")
      */
+    private $category;
+    
+    
+   /**
+    * @var integer
+    *
+    * @ORM\Column(name="ordering", type="smallint", options={"default" = 1})
+    */
     private $ordering = 1;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
+    
+    public function getId() {
         return $this->id;
     }
-
+    
     /**
-     * Set courseId
-     *
-     * @param integer $courseId
-     * @return CourseToCategory
+     * Get course
+     * 
+     * @return Cource
      */
-    public function setCourseId($courseId)
-    {
-        $this->courseId = $courseId;
-
-        return $this;
+    public function getCourse() {
+        return $this->course;
     }
-
+    
     /**
-     * Get courseId
-     *
-     * @return integer 
+     * Set course
+     * 
+     * @param Course $course
      */
-    public function getCourseId()
-    {
-        return $this->courseId;
+    public function setCourse($course) {
+        $this->course = $course;
     }
-
+    
     /**
-     * Set categoryId
-     *
-     * @param integer $categoryId
-     * @return CourseToCategory
+     * Get category
+     * 
+     * @return Category
      */
-    public function setCategoryId($categoryId)
-    {
-        $this->categoryId = $categoryId;
-
-        return $this;
+    public function getCategory() {
+        return $this->category;
     }
-
+    
     /**
-     * Get categoryId
-     *
-     * @return integer 
+     * Set category
+     * 
+     * @param Category $category
      */
-    public function getCategoryId()
-    {
-        return $this->categoryId;
+    public function setCategory($category) {
+        $this->category = $category;
     }
-
-    /**
-     * Set ordering
-     *
-     * @param integer $ordering
-     * @return CourseToCategory
-     */
-    public function setOrdering($ordering)
-    {
-        $this->ordering = $ordering;
-
-        return $this;
-    }
-
+    
     /**
      * Get ordering
-     *
-     * @return integer 
+     * 
+     * @return int
      */
-    public function getOrdering()
-    {
+    public function getOrdering() {
         return $this->ordering;
     }
+    
+    /**
+     * Set Ordering
+     * 
+     * @param int $ordering
+     */
+    public function setOrdering($ordering) {
+        $this->ordering = $ordering;
+    }
+
 }

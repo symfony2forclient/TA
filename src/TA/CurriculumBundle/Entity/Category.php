@@ -70,20 +70,17 @@ class Category
      */
     private $dateUpdated;
     
-     /**
-     * @var integer
-     *
-     * @ORM\Column(name="parentId", type="integer", options={"default" = 0})
-     */
-    private $parentId;
-    
    
+   /**
+    * @ORM\ManyToOne(targetEntity="Category")    
+    * @ORM\JoinColumn(name="parentId", referencedColumnName="id") 
+    */  
+    private $parent;
     
-    /**
-     * @ORM\OneToMany(targetEntity="CourseToCategory", mappedBy="category")
-     */
-    
-    private $courseToCategory;
+   /**
+    * @ORM\OneToMany(targetEntity="CourseToCategory", mappedBy="category", cascade={"persist"}, orphanRemoval=TRUE)
+    */    
+    private $courseToCategories;
 
     /**
      * Get id
@@ -94,190 +91,78 @@ class Category
     {
         return $this->id;
     }
-
-    /**
-     * Set parentId
-     *
-     * @param integer $parentId
-     * @return Category
-     */
-    public function setParentId($parentId)
-    {
-        $this->parentId = $parentId;
-
-        return $this;
-    }
-
-    /**
-     * Get parentId
-     *
-     * @return integer 
-     */
-    public function getParentId()
-    {
-        return $this->parentId;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return Category
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
+    
+    public function getImage() {
         return $this->image;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Category
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
+    public function setImage($image) {
+        $this->image = $image;
     }
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Category
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
+    public function setName($name) {
+        $this->name = $name;
     }
 
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     * @return Category
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
-    /**
-     * Get status
-     *
-     * @return string 
-     */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
-    /**
-     * Set ordering
-     *
-     * @param integer $ordering
-     * @return Category
-     */
-    public function setOrdering($ordering)
-    {
-        $this->ordering = $ordering;
-
-        return $this;
+    public function setStatus($status) {
+        $this->status = $status;
     }
 
-    /**
-     * Get ordering
-     *
-     * @return integer 
-     */
-    public function getOrdering()
-    {
+    public function getOrdering() {
         return $this->ordering;
     }
 
-    /**
-     * Set dateCreated
-     *
-     * @param \DateTime $dateCreated
-     * @return Category
-     */
-    public function setDateCreated($dateCreated)
-    {
-        $this->dateCreated = $dateCreated;
-
-        return $this;
+    public function setOrdering($ordering) {
+        $this->ordering = $ordering;
     }
 
-    /**
-     * Get dateCreated
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreated()
-    {
+    public function getDateCreated() {
         return $this->dateCreated;
     }
 
-    /**
-     * Set dateUpdated
-     *
-     * @param \DateTime $dateUpdated
-     * @return Category
-     */
-    public function setDateUpdated($dateUpdated)
-    {
-        $this->dateUpdated = $dateUpdated;
-
-        return $this;
+    public function setDateCreated(\DateTime $dateCreated) {
+        $this->dateCreated = $dateCreated;
     }
 
-    /**
-     * Get dateUpdated
-     *
-     * @return \DateTime 
-     */
-    public function getDateUpdated()
-    {
+    public function getDateUpdated() {
         return $this->dateUpdated;
     }
-    
+
+    public function setDateUpdated(\DateTime $dateUpdated) {
+        $this->dateUpdated = $dateUpdated;
+    }
+
+    public function getParent() {
+        return $this->parent;
+    }
+
+    public function setParent($parent) {
+        $this->parent = $parent;
+    }
+
+    public function getCourseToCategories() {
+        return $this->courseToCategories;
+    }
+
+    public function addCourseToCategories($courseToCategories) {
+        $this->courseToCategories[] = $courseToCategories;
+    }
+
     public function __toString() { return $this->name; }
 }
