@@ -143,6 +143,7 @@ class CourseController extends Controller
             $em = $this->getDoctrine()->getManager();
                         
             $em->persist($entity);
+            $em->flush();
             
             //To link category to course by CourseToCategory entity
             $categories = $entity->getCategories();        
@@ -150,7 +151,7 @@ class CourseController extends Controller
                 $courseToCategory = new CourseToCategory();
                 $courseToCategory->setCategory($category);
                 $courseToCategory->setCourse($entity);
-                $courseToCategory->setOrdering(0);
+                $courseToCategory->setOrdering(0); //TODO: need to changed magic by dynamically
                 $em->persist($courseToCategory);
             }
             $em->flush();
