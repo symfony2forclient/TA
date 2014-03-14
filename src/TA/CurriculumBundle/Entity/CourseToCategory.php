@@ -12,23 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CourseToCategory
 {
-     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    
    
    /**
+    * @ORM\Id    
     * @ORM\ManyToOne(targetEntity="Course", inversedBy="courseToCategories")
     * @ORM\JoinColumn(name="courseId", referencedColumnName="id")
     */
     private $course;
     
     /**
+     * @ORM\Id     
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="courseToCategories")
      * @ORM\JoinColumn(name="categoryId", referencedColumnName="id")
      */
@@ -42,9 +35,6 @@ class CourseToCategory
     */
     private $ordering = 1;
     
-    public function getId() {
-        return $this->id;
-    }
     
     /**
      * Get course
