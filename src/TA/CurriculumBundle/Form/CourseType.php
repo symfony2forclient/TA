@@ -26,7 +26,7 @@ class CourseType extends AbstractType
                     'multiple' => true               
                  )
             )
-        ;
+         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
