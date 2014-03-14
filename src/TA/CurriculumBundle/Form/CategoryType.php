@@ -24,7 +24,7 @@ class CategoryType extends AbstractType
             //->add('ordering')
             //->add('dateCreated')
             //->add('dateUpdated')
-            ->add('parentId', 'entity', array(
+            ->add('parent', 'entity', array(
                 'class' => 'TACurriculumBundle:Category',
                 'property' => 'name'
                 //'choices' => $this->getAllCategories()

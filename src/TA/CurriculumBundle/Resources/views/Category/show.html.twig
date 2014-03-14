@@ -35,7 +35,7 @@
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateUpdated|date('Y-m-d H:i:s') }}</span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Parentid</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.parentId }}</span>            </div>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{% if entity.parent %} {{ entity.parent.id }} {% endif %}</span>            </div>
         </div>    </fieldset>
 </form>
 

@@ -152,9 +152,9 @@ class CourseController extends Controller
             $ordering=1;
             
               $entity2 = new CourseToCategory();
-              $entity2->setCourseId($courseId);
+              $entity2->setCourse($courseId);
               $entity2->setOrdering($ordering);
-              $entity2->setCategoryId(6);
+              $entity2->setCategory(6);
               $em2 = $this->getDoctrine()->getManager();
               $em2->persist($entity2);
               $em2->flush();

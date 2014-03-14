@@ -11,7 +11,7 @@ class ContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('courseId')
+            //->add('courseId')
             ->add('title')
             ->add('description')
             ->add('type')

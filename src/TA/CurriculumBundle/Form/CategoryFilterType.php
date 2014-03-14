@@ -22,7 +22,7 @@ class CategoryFilterType extends AbstractType
             ->add('ordering', 'filter_number_range')
             ->add('dateCreated', 'filter_date_range')
             ->add('dateUpdated', 'filter_date_range')
-            ->add('parentId', 'filter_number_range')
+           // ->add('parentId', 'filter_number_range')
         ;
 
         $listener = function(FormEvent $event)

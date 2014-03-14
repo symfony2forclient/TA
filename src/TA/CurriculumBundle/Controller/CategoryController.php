@@ -132,9 +132,8 @@ class CategoryController extends Controller
         $entity->setDateCreated($date);
         $entity->setDateUpdated($date);
         //published
-        $entity->setStatus(1);
-       // $parent = $form["parentId"]->getData();
-        $parentId = ($entity->getParent())? $entity->getParent->getId() : null;        
+        $entity->setStatus(1);        
+        $parentId = ($entity->getParent())? $entity->getParent()->getId() : 0;        
         $em = $this->getDoctrine()->getManager();
         $query2 = $em->createQuery("SELECT MAX(a.ordering) from TACurriculumBundle:Category a where a.parent=$parentId");
         $product2 = $query2->getResult();

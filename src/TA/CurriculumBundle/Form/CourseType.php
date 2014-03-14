@@ -20,13 +20,13 @@ class CourseType extends AbstractType
             //->add('visits')
             ->add('targetAgeFrom')
             ->add('targetAgeTo')
-            ->add('category','entity',array(
-                'class' => 'TACurriculumBundle:Category',
-                'property' => 'name',
-                'expanded' => true,
-                'multiple' => true               
-  )
-                )
+//            ->add('category','entity',array(
+//                'class' => 'TACurriculumBundle:Category',
+//                'property' => 'name',
+//                'expanded' => true,
+//                'multiple' => true               
+//  )
+//                )
         ;
     }
 

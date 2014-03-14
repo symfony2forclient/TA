@@ -1,0 +1,6 @@
+# app/config/config.yml
+fos_user:
+    # ...
+    registration:
+        form:
+            type: acme_user_registration

@@ -1,0 +1,3 @@
+
+            new TA\CurriculumBundle\TACurriculumBundle(),
+            new TA\UserBundle\TAUserBundle()
