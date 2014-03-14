@@ -93,13 +93,17 @@ class Course {
      * @ORM\OneToMany(targetEntity="CourseToCategory", mappedBy="course")
      */
     private $courseToCategories;
+    
+    
+    private $categories; 
 
-   /**
+    /**
     * Constructor
     */
     public function __construct() {
         $this->contents = new \Doctrine\Common\Collections\ArrayCollection();
         $this->courseToCategories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -308,9 +312,18 @@ class Course {
     public function addCourseToCategories($courseToCategories) {
         $this->courseToCategories[] = $courseToCategories;
     }
- 
-    public function __toString() {
+    
+    public function getCategories() {
+        return $this->categories;
+    }
+
+    public function addCategories($categories) {
+        $this->categories[] = $categories;
+    }
+
+        public function __toString() {
         return $this->title;
     }
+    
 
 }

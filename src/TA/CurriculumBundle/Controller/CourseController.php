@@ -139,39 +139,25 @@ class CourseController extends Controller
         $entity->setDateUpdated($date);
         $entity->setVisits(0);
         
-        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+                        
             $em->persist($entity);
+            
+            //To link category to course by CourseToCategory entity
+            $categories = $entity->getCategories();        
+            foreach ($categories as $category){
+                $courseToCategory = new CourseToCategory();
+                $courseToCategory->setCategory($category);
+                $courseToCategory->setCourse($entity);
+                $courseToCategory->setOrdering(0);
+                $em->persist($courseToCategory);
+            }
             $em->flush();
-          //  print_r($entity);
-           // die($entity->getId()."dd");
-            $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
-            $categoryId = 2;
-            $courseId = $entity->getId();
-            $ordering=1;
+          
+           $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
             
-              $entity2 = new CourseToCategory();
-              $entity2->setCourse($courseId);
-              $entity2->setOrdering($ordering);
-              $entity2->setCategory(6);
-              $em2 = $this->getDoctrine()->getManager();
-              $em2->persist($entity2);
-              $em2->flush();
-            
-//            $entity3 = new Category();
-//            $entity3->setName("ahmed");
-//            $entity3->setStatus(1);
-//            $entity3->setOrdering(1);
-//            $entity3->setParentId(1);
-//            $date= new \DateTime();
-//            $entity3->setdateCreated($date);
-//            $entity3->setdateUpdated($date);
-//            $em3 = $this->getDoctrine()->getManager();
-//            $em3->persist($entity3);
-//            $em3->flush();
-            
-            return $this->redirect($this->generateUrl('course_show', array('id' => $entity->getId())));
+           return $this->redirect($this->generateUrl('course_show', array('id' => $entity->getId())));
         }
 
         return array(
